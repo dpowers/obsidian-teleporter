@@ -6,7 +6,19 @@
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
-		"version": "node version-bump.mjs && git add manifest.json versions.json"
+		"version": "node version-bump.mjs && git add manifest.json versions.json",
+		"deploy": "node scripts/deploy.mjs deploy",
+		"deploy:watch": "node scripts/deploy.mjs watch",
+		"clean": "node scripts/deploy.mjs clean",
+		"clean:plugin": "node scripts/deploy.mjs clean-plugin",
+		"test": "npm run deploy",
+		"test:watch": "npm run deploy:watch",
+		"open-vault": "open test-vault || xdg-open test-vault || start test-vault",
+		"setup-vaults": "node scripts/setup-test-vaults.mjs setup",
+		"clean-vaults": "node scripts/setup-test-vaults.mjs clean",
+		"list-vaults": "node scripts/setup-test-vaults.mjs list",
+		"test:multi": "npm run setup-vaults && npm run deploy",
+		"test:full": "npm run clean-vaults && npm run setup-vaults && npm run deploy"
 	},
 	"keywords": [
 		"obsidian",

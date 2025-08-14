@@ -1,5 +1,5 @@
 # vscode
-.vscode 
+.vscode
 
 # Intellij
 *.iml
@@ -20,3 +20,10 @@ data.json
 
 # Exclude macOS Finder (System Explorer) View States
 .DS_Store
+
+# Test vaults for local development
+test-vault/
+test-vault-personal/
+test-vault-work/
+test-vault-archive/
+test-vaults-config.json

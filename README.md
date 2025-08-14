@@ -152,22 +152,29 @@ obsidian-teleporter/
 ```
 
 ### Development Setup
+
+For detailed development instructions, testing workflows, and available commands, see the [Development Guide](DEVELOPMENT.md).
+
+**Quick Start:**
 ```bash
 # Install dependencies
 npm install
 
-# Start development build with hot reload
-npm run dev
+# Set up test vault with plugin installed
+npm run test
 
-# Build for production
-npm run build
+# Watch mode for active development
+npm run test:watch
 
-# Run linter
-eslint main.ts
-
-# Run tests (when available)
-npm test
+# Set up multiple vaults for testing file movements
+npm run setup-vaults
 ```
+
+**Key Commands:**
+- `npm run deploy` - Build and deploy to test vault
+- `npm run clean` - Remove test vault
+- `npm run test:multi` - Set up multiple test vaults
+- See [DEVELOPMENT.md](DEVELOPMENT.md) for complete command reference
 
 ### Technical Details
 - Built with TypeScript for type safety
