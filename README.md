@@ -7,7 +7,7 @@ A plugin for [Obsidian](https://obsidian.md) that enables seamless file movement
 **Teleporter** allows you to quickly move files from one Obsidian vault to another with a simple hotkey command. Perfect for users who work with multiple vaults and need to reorganize their notes efficiently.
 
 ### Core Features (V0)
-- 🚀 **Quick File Movement**: Move the current active file to another vault with a hotkey (default: `Ctrl/Cmd + Shift + M`)
+- 🚀 **Quick File Movement**: Move the current active file to another vault with a customizable hotkey
 - 📁 **Vault Management**: Configure and manage multiple destination vaults
 - 🎯 **Folder Selection**: Choose exactly where in the destination vault your file should go
 - ⚙️ **Flexible Options**: Configure whether to delete the original file or keep it as a copy
@@ -32,19 +32,31 @@ Once approved, you'll be able to install Teleporter directly from Obsidian:
 
 ### Basic Workflow
 1. Open the file you want to move in Obsidian
-2. Press the hotkey (`Ctrl/Cmd + Shift + M` by default)
-3. Select the destination vault from the modal
+2. Press your configured hotkey (set in Settings → Hotkeys → search "Teleporter")
+3. Select the destination vault from the modal (press 1-9 for quick selection)
 4. Choose the target folder in the destination vault
 5. Confirm the move operation
 
 ### Configuration
 Access plugin settings via Settings → Plugin Options → Teleporter
 
+#### Setting up the Hotkey:
+1. Go to Settings → Hotkeys
+2. Search for "Teleporter"
+3. Click on "Teleport current file to another vault"
+4. Set your preferred hotkey combination (e.g., `Ctrl/Cmd + Shift + M`)
+
 #### Available Settings:
 - **Vault Configuration**: Add and manage destination vaults
 - **Delete Original**: Choose whether to delete or keep the original file after moving
 - **Preserve File History**: Maintain creation and modification dates
 - **Show Confirmation**: Enable/disable confirmation dialogs before moving files
+
+#### Vault Selector Shortcuts:
+- **Number keys (1-9)**: Quick select vaults 1-9
+- **Arrow keys**: Navigate through vaults
+- **Enter**: Confirm selection
+- **Escape**: Cancel operation
 
 ## Requirements
 - Obsidian v0.15.0 or higher

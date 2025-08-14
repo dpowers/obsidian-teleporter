@@ -29,9 +29,7 @@ export class VaultSelectorModal extends Modal {
 		this.onSelect = onSelect;
 
 		// Filter out current vault and invalid vaults
-		this.vaults = vaults.filter(
-			(v) => v.path !== currentVaultPath && v.isValid,
-		);
+		this.vaults = vaults.filter((v) => v.path !== currentVaultPath && v.isValid);
 		this.filteredVaults = [...this.vaults];
 
 		// Sort vaults: recently used first, then alphabetically
@@ -56,26 +54,31 @@ export class VaultSelectorModal extends Modal {
 			return;
 		}
 
+		// Instructions for keyboard shortcuts
+		const instructionsEl = contentEl.createDiv("vault-selector-instructions");
+		instructionsEl.style.fontSize = "0.85em";
+		instructionsEl.style.color = "var(--text-muted)";
+		instructionsEl.style.marginBottom = "10px";
+		instructionsEl.innerHTML =
+			"Press <kbd>1</kbd>-<kbd>9</kbd> for quick selection • <kbd>↑</kbd><kbd>↓</kbd> to navigate • <kbd>Enter</kbd> to confirm";
+
 		// Search box
 		const searchContainer = contentEl.createDiv("vault-search-container");
 		searchContainer.style.marginBottom = "15px";
 
-		new Setting(searchContainer)
-			.setName("Search vaults")
-			.addText((text) => {
-				this.searchInput = text;
-				text.setPlaceholder("Type to filter vaults...")
-					.onChange((value) => {
-						this.filterVaults(value);
-					});
-
-				// Focus on search box
-				setTimeout(() => {
-					text.inputEl.focus();
-				}, 100);
-
-				return text;
+		new Setting(searchContainer).setName("Search vaults").addText((text) => {
+			this.searchInput = text;
+			text.setPlaceholder("Type to filter vaults...").onChange((value) => {
+				this.filterVaults(value);
 			});
+
+			// Focus on search box
+			setTimeout(() => {
+				text.inputEl.focus();
+			}, 100);
+
+			return text;
+		});
 
 		// Vault list container
 		this.vaultListContainer = contentEl.createDiv("vault-list-container");
@@ -96,11 +99,9 @@ export class VaultSelectorModal extends Modal {
 		buttonContainer.style.gap = "10px";
 
 		// Cancel button
-		new ButtonComponent(buttonContainer)
-			.setButtonText("Cancel")
-			.onClick(() => {
-				this.close();
-			});
+		new ButtonComponent(buttonContainer).setButtonText("Cancel").onClick(() => {
+			this.close();
+		});
 
 		// Select button
 		const selectButton = new ButtonComponent(buttonContainer)
@@ -238,6 +239,23 @@ export class VaultSelectorModal extends Modal {
 		header.style.gap = "10px";
 		header.style.marginBottom = "5px";
 
+		// Add number shortcut indicator for first 9 vaults
+		if (index < 9) {
+			const numberBadge = header.createDiv();
+			numberBadge.style.width = "20px";
+			numberBadge.style.height = "20px";
+			numberBadge.style.borderRadius = "3px";
+			numberBadge.style.backgroundColor = "var(--background-modifier-border)";
+			numberBadge.style.display = "flex";
+			numberBadge.style.alignItems = "center";
+			numberBadge.style.justifyContent = "center";
+			numberBadge.style.fontSize = "0.75em";
+			numberBadge.style.fontWeight = "bold";
+			numberBadge.style.flexShrink = "0";
+			numberBadge.textContent = (index + 1).toString();
+			numberBadge.title = `Press ${index + 1} to select`;
+		}
+
 		// Color indicator
 		const colorIndicator = header.createDiv();
 		colorIndicator.style.width = "12px";
@@ -336,6 +354,25 @@ export class VaultSelectorModal extends Modal {
 		this.contentEl.addEventListener("keydown", (event) => {
 			const items = this.vaultListContainer.querySelectorAll(".vault-selector-item");
 			if (items.length === 0) return;
+
+			// Handle number keys for quick selection (1-9)
+			if (event.key >= "1" && event.key <= "9") {
+				const targetIndex = parseInt(event.key) - 1;
+				if (targetIndex < this.filteredVaults.length && targetIndex < 9) {
+					event.preventDefault();
+					const targetVault = this.filteredVaults[targetIndex];
+					const targetElement = items[targetIndex] as HTMLElement;
+					this.selectVault(targetVault, targetElement);
+					targetElement.scrollIntoView({ block: "nearest" });
+
+					// If Ctrl/Cmd is held, immediately confirm selection
+					if (event.ctrlKey || event.metaKey) {
+						this.onSelect(targetVault);
+						this.close();
+					}
+				}
+				return;
+			}
 
 			let currentIndex = -1;
 			if (this.selectedVault) {

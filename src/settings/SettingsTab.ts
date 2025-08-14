@@ -32,6 +32,31 @@ export class TeleporterSettingTab extends PluginSettingTab {
 		// Quick Actions Section
 		this.createQuickActionsSection(containerEl);
 
+		// Hotkey reminder
+		const hotkeyInfo = containerEl.createDiv("hotkey-info");
+		hotkeyInfo.style.padding = "10px";
+		hotkeyInfo.style.marginBottom = "15px";
+		hotkeyInfo.style.borderRadius = "5px";
+		hotkeyInfo.style.backgroundColor = "var(--background-secondary-alt)";
+		hotkeyInfo.style.fontSize = "0.9em";
+
+		const hotkeyText = hotkeyInfo.createDiv();
+		hotkeyText.innerHTML = `<strong>Tip:</strong> Set a hotkey for "Teleport current file" in Settings → Hotkeys`;
+
+		// Check if a hotkey is configured
+		// @ts-ignore - Obsidian's internal API
+		const customKeys = this.app.hotkeyManager.customKeys;
+		const teleportCommand = "obsidian-teleporter:teleport-current-file";
+		if (customKeys && customKeys[teleportCommand]) {
+			const hotkeys = customKeys[teleportCommand];
+			if (hotkeys && hotkeys.length > 0) {
+				const key = hotkeys[0];
+				const modifiers = key.modifiers.join("+");
+				const keyCombo = modifiers ? `${modifiers}+${key.key}` : key.key;
+				hotkeyText.innerHTML = `<strong>Current hotkey:</strong> <kbd>${keyCombo}</kbd> • Change in Settings → Hotkeys`;
+			}
+		}
+
 		// Vault Configuration Section
 		containerEl.createEl("h3", { text: "Configured Vaults" });
 
@@ -105,15 +130,30 @@ export class TeleporterSettingTab extends PluginSettingTab {
 		containerEl.createEl("h3", { text: "Advanced Settings" });
 
 		new Setting(containerEl)
-			.setName("Default hotkey")
-			.setDesc("The default keyboard shortcut for teleporting files")
-			.addText((text) =>
-				text
-					.setPlaceholder("Ctrl+Shift+M")
-					.setValue(this.plugin.settings.defaultHotkey)
-					.onChange(async (value) => {
-						this.plugin.settings.defaultHotkey = value;
-						await this.plugin.saveSettings();
+			.setName("Configure hotkey")
+			.setDesc(
+				"Set the keyboard shortcut for teleporting files in Obsidian's hotkey settings",
+			)
+			.addButton((button) =>
+				button
+					.setButtonText("Open Hotkey Settings")
+					.setCta()
+					.onClick(() => {
+						// @ts-ignore - Obsidian's internal API
+						this.app.setting.open();
+						// @ts-ignore - Obsidian's internal API
+						this.app.setting.openTab("hotkeys");
+						// Focus on search and pre-fill with our plugin name
+						setTimeout(() => {
+							// @ts-ignore - Obsidian's internal API
+							const searchEl = this.app.setting.containerEl.querySelector(
+								'.setting-item-control input[type="text"]',
+							);
+							if (searchEl) {
+								searchEl.value = "Teleporter";
+								searchEl.dispatchEvent(new Event("input"));
+							}
+						}, 100);
 					}),
 			);
 

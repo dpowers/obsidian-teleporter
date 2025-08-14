@@ -1,11 +1,10 @@
-import { TFile } from 'obsidian';
+import { TFile } from "obsidian";
 
 export interface TeleporterSettings {
 	vaults: VaultConfig[];
 	deleteOriginalAfterMove: boolean;
 	preserveFileHistory: boolean;
 	showConfirmation: boolean;
-	defaultHotkey: string;
 	lastUsedVaultId?: string;
 	recentDestinations?: RecentDestination[];
 }
@@ -26,7 +25,7 @@ export interface MoveOperation {
 	targetVault: VaultConfig;
 	targetPath: string;
 	timestamp: number;
-	status: 'pending' | 'success' | 'failed';
+	status: "pending" | "success" | "failed";
 	error?: string;
 }
 
@@ -55,19 +54,18 @@ export const DEFAULT_SETTINGS: TeleporterSettings = {
 	deleteOriginalAfterMove: true,
 	preserveFileHistory: false,
 	showConfirmation: true,
-	defaultHotkey: 'Ctrl+Shift+M',
-	recentDestinations: []
+	recentDestinations: [],
 };
 
 export const VAULT_COLORS = [
-	'#e74c3c', // red
-	'#3498db', // blue
-	'#2ecc71', // green
-	'#f39c12', // orange
-	'#9b59b6', // purple
-	'#1abc9c', // turquoise
-	'#34495e', // dark gray
-	'#e67e22', // dark orange
-	'#16a085', // dark turquoise
-	'#8e44ad', // dark purple
+	"#e74c3c", // red
+	"#3498db", // blue
+	"#2ecc71", // green
+	"#f39c12", // orange
+	"#9b59b6", // purple
+	"#1abc9c", // turquoise
+	"#34495e", // dark gray
+	"#e67e22", // dark orange
+	"#16a085", // dark turquoise
+	"#8e44ad", // dark purple
 ];

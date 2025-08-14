@@ -33,12 +33,6 @@ export default class TeleporterPlugin extends Plugin {
 			callback: () => {
 				this.teleportCurrentFile();
 			},
-			hotkeys: [
-				{
-					modifiers: ["Ctrl", "Shift"],
-					key: "m",
-				},
-			],
 		});
 
 		// Register command to open settings
@@ -93,9 +87,7 @@ export default class TeleporterPlugin extends Plugin {
 		if (!this.settings.recentDestinations) {
 			this.settings.recentDestinations = [];
 		}
-		if (this.settings.defaultHotkey === undefined) {
-			this.settings.defaultHotkey = DEFAULT_SETTINGS.defaultHotkey;
-		}
+
 		if (this.settings.deleteOriginalAfterMove === undefined) {
 			this.settings.deleteOriginalAfterMove = DEFAULT_SETTINGS.deleteOriginalAfterMove;
 		}
