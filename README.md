@@ -1,106 +1,265 @@
-# Obsidian Teleporter
+# Obsidian Teleporter Plugin
 
-A plugin for [Obsidian](https://obsidian.md) that enables seamless file movement between vaults.
+[![Version](https://img.shields.io/badge/version-0.1.0-blue)](https://github.com/yourusername/obsidian-teleporter/releases)
+[![Obsidian](https://img.shields.io/badge/obsidian-%3E%3D0.15.0-purple)](https://obsidian.md)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-## Features
+**Teleporter** is a powerful Obsidian plugin that enables seamless file movement between vaults with a simple hotkey. Perfect for users who work with multiple vaults and need to reorganize their notes efficiently.
 
-**Teleporter** allows you to quickly move files from one Obsidian vault to another with a simple hotkey command. Perfect for users who work with multiple vaults and need to reorganize their notes efficiently.
+## ✨ Features
 
-### Core Features (V0)
-- 🚀 **Quick File Movement**: Move the current active file to another vault with a customizable hotkey
-- 📁 **Vault Management**: Configure and manage multiple destination vaults
-- 🎯 **Folder Selection**: Choose exactly where in the destination vault your file should go
-- ⚙️ **Flexible Options**: Configure whether to delete the original file or keep it as a copy
-- 🛡️ **Safe Operations**: Confirmation dialogs and error handling to prevent accidental data loss
+- 🚀 **Quick File Movement** - Move files between vaults with a single hotkey
+- 📁 **Smart Vault Management** - Configure and organize multiple destination vaults
+- 🎯 **Precise Folder Selection** - Choose exactly where files should go
+- ⌨️ **Keyboard-First Design** - Complete keyboard navigation with number shortcuts
+- 🛡️ **Safe Operations** - File integrity verification and automatic rollback on failure
+- 🎨 **Visual Organization** - Color-code your vaults for easy identification
+- 📊 **Recent Destinations** - Quick access to frequently used locations
+- ⚙️ **Flexible Configuration** - Customize behavior to match your workflow
 
-## Installation
-
-### Manual Installation
-1. Download the latest release from the [Releases](https://github.com/yourusername/obsidian-teleporter/releases) page
-2. Extract the files into your vault's plugins folder: `<vault>/.obsidian/plugins/obsidian-teleporter/`
-3. Reload Obsidian
-4. Enable the plugin in Settings → Community plugins
+## 📦 Installation
 
 ### From Community Plugins (Coming Soon)
-Once approved, you'll be able to install Teleporter directly from Obsidian:
+Once approved, you'll be able to install directly from Obsidian:
 1. Open Settings → Community plugins
 2. Click Browse and search for "Teleporter"
-3. Click Install
-4. Enable the plugin
+3. Click Install, then Enable
 
-## Usage
+### Manual Installation
+1. Download the latest `obsidian-teleporter-[version].zip` from [Releases](https://github.com/yourusername/obsidian-teleporter/releases)
+2. Extract the archive into your vault's plugins folder: `<vault>/.obsidian/plugins/obsidian-teleporter/`
+3. Reload Obsidian (Ctrl/Cmd + R)
+4. Enable the plugin in Settings → Community plugins
 
-### Basic Workflow
-1. Open the file you want to move in Obsidian
-2. Press your configured hotkey (set in Settings → Hotkeys → search "Teleporter")
-3. Select the destination vault from the modal (press 1-9 for quick selection)
-4. Choose the target folder in the destination vault
-5. Confirm the move operation
+### Building from Source
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/obsidian-teleporter.git
 
-### Configuration
-Access plugin settings via Settings → Plugin Options → Teleporter
+# Navigate to the project directory
+cd obsidian-teleporter
 
-#### Setting up the Hotkey:
-1. Go to Settings → Hotkeys
-2. Search for "Teleporter"
-3. Click on "Teleport current file to another vault"
-4. Set your preferred hotkey combination (e.g., `Ctrl/Cmd + Shift + M`)
+# Install dependencies
+npm install
 
-#### Available Settings:
-- **Vault Configuration**: Add and manage destination vaults
-- **Delete Original**: Choose whether to delete or keep the original file after moving
-- **Preserve File History**: Maintain creation and modification dates
-- **Show Confirmation**: Enable/disable confirmation dialogs before moving files
+# Build the plugin
+npm run build
 
-#### Vault Selector Shortcuts:
-- **Number keys (1-9)**: Quick select vaults 1-9
-- **Arrow keys**: Navigate through vaults
-- **Enter**: Confirm selection
-- **Escape**: Cancel operation
+# Copy files to your vault's plugins folder
+cp main.js manifest.json styles.css <vault>/.obsidian/plugins/obsidian-teleporter/
+```
 
-## Requirements
-- Obsidian v0.15.0 or higher
-- Desktop only (Windows, macOS, Linux) - Mobile support planned for future versions
+## 🚀 Quick Start
 
-## Development Status
+### Basic Usage
+1. **Set up your hotkey** (Settings → Hotkeys → search "Teleporter")
+   - Recommended: `Ctrl/Cmd + Shift + M`
+2. **Configure your vaults** (Settings → Plugin Options → Teleporter)
+   - Click "Add Vault" or use "Discover Vaults" for automatic detection
+3. **Move a file**:
+   - Open the file you want to move
+   - Press your configured hotkey
+   - Select destination vault (press 1-9 for quick selection)
+   - Choose target folder
+   - Confirm the move
 
-This plugin is currently in **V0 (Beta)** development. Core functionality is being implemented with a focus on reliability and user experience.
+## ⌨️ Keyboard Shortcuts
 
-### Roadmap
-- [x] Project setup and structure
-- [ ] Vault discovery and configuration
-- [ ] File movement operations
-- [ ] User interface (modals and settings)
-- [ ] Error handling and recovery
-- [ ] Testing and bug fixes
+### Global Hotkey
+Set your preferred hotkey in Settings → Hotkeys → search "Teleporter"
 
-### Future Enhancements (Post-V0)
+**Recommended combinations:**
+- `Ctrl/Cmd + Shift + M` (Move)
+- `Ctrl/Cmd + Shift + T` (Teleport)
+- `Alt + M` (quick Move)
+
+### Modal Navigation
+
+#### Vault Selector
+| Key | Action |
+|-----|--------|
+| `1-9` | Quick select vaults 1-9 |
+| `↑` / `↓` | Navigate through vault list |
+| `Enter` | Confirm selection |
+| `Escape` | Cancel operation |
+| Type text | Filter vaults by name |
+
+#### Folder Selector
+| Key | Action |
+|-----|--------|
+| `↑` / `↓` | Navigate folders |
+| `→` | Expand folder |
+| `←` | Collapse folder |
+| `Enter` | Confirm selection |
+| `Escape` | Cancel operation |
+
+## ⚙️ Configuration
+
+Access settings via: Settings → Plugin Options → Teleporter
+
+### Vault Management
+- **Add Vault**: Manually configure a vault with custom name, color, and description
+- **Discover Vaults**: Automatically scan common locations for Obsidian vaults
+- **Edit Vault**: Modify vault settings (name, color, path, description)
+- **Validate**: Check if configured vaults are accessible
+- **Reorder**: Arrange vaults in your preferred order
+
+### File Operation Settings
+- **Delete Original**: Remove file from source vault after successful move (default: on)
+- **Preserve File History**: Maintain creation and modification dates (default: on)
+- **Show Confirmation**: Display confirmation dialog before moving (default: on)
+
+### Advanced Options
+- **Recent Destinations**: Track frequently used folders
+- **Last Used Vault**: Remember previous destination for quick access
+
+## 🎯 Use Cases
+
+### Academic Research
+- Move completed research notes to an archive vault
+- Organize papers by semester or project
+- Separate active and reference materials
+
+### Content Creation
+- Move drafts to a publishing vault
+- Organize content by status (ideas, drafts, published)
+- Separate personal and professional notes
+
+### Knowledge Management
+- Archive completed projects
+- Move notes between work and personal vaults
+- Organize by topic or time period
+
+## 🔧 Development
+
+### Project Structure
+```
+obsidian-teleporter/
+├── main.ts                 # Plugin entry point
+├── src/
+│   ├── types.ts           # TypeScript definitions
+│   ├── VaultManager.ts    # Vault management logic
+│   ├── FileMover.ts       # File operations
+│   ├── modals/            # UI components
+│   │   ├── AddVaultModal.ts
+│   │   ├── VaultSelectorModal.ts
+│   │   └── FolderSelectorModal.ts
+│   └── settings/
+│       └── SettingsTab.ts # Settings interface
+├── manifest.json          # Plugin metadata
+├── package.json          # Dependencies
+└── README.md            # Documentation
+```
+
+### Development Setup
+```bash
+# Install dependencies
+npm install
+
+# Start development build with hot reload
+npm run dev
+
+# Build for production
+npm run build
+
+# Run linter
+eslint main.ts
+
+# Run tests (when available)
+npm test
+```
+
+### Technical Details
+- Built with TypeScript for type safety
+- Uses Obsidian's official API
+- File operations use Node.js fs module (desktop only)
+- SHA-256 checksums for file integrity verification
+- Atomic operations with rollback capability
+
+## 📊 Current Status
+
+**Version**: 0.1.0 (Beta)  
+**Platform Support**: Desktop only (Windows, macOS, Linux)  
+**Obsidian Version**: 0.15.0+
+
+### Implemented Features ✅
+- Core file movement functionality
+- Vault discovery and management
+- Visual vault selector with colors
+- Folder navigation and selection
+- File integrity verification
+- Progress indicators
+- Error handling with rollback
+- Settings persistence
+- Keyboard navigation
+
+### Planned Features 🚧
+- Undo/redo functionality
 - Batch file operations
 - Folder movement support
 - Mobile platform support
+- Move history tracking
+- Advanced conflict resolution
 - Integration with other plugins
-- Move history with undo/redo
-- Cross-vault search capabilities
 
-## Support
-
-If you encounter any issues or have suggestions:
-- Open an issue on [GitHub](https://github.com/yourusername/obsidian-teleporter/issues)
-- Join the discussion in the Obsidian community forums
-
-## Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## License
+### How to Contribute
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+### Development Guidelines
+- Follow TypeScript best practices
+- Add comments for complex logic
+- Update documentation for new features
+- Test thoroughly before submitting PR
+- Follow existing code style
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+#### Hotkey Not Working
+- Check for conflicts in Settings → Hotkeys
+- Ensure plugin is enabled
+- Verify a file is open in the editor
+
+#### Vault Not Found
+- Check vault path in settings
+- Ensure `.obsidian` folder exists in vault
+- Try "Validate All" button in settings
+
+#### Permission Errors
+- Ensure write permissions for both vaults
+- Check if files are locked by other programs
+- Verify disk space availability
+
+### Getting Help
+- Check [Issues](https://github.com/yourusername/obsidian-teleporter/issues) for known problems
+- Join the discussion in [Obsidian Community Forums](https://forum.obsidian.md)
+- Report bugs with detailed reproduction steps
+
+## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
+## 🙏 Acknowledgments
 
-- Built using the [Obsidian API](https://github.com/obsidianmd/obsidian-api)
-- Inspired by the need for better multi-vault workflows in Obsidian
+- Built with [Obsidian API](https://github.com/obsidianmd/obsidian-api)
+- Inspired by the Obsidian community's multi-vault workflows
+- Thanks to all contributors and testers
+
+## 📚 Resources
+
+- [Plugin Documentation](https://docs.obsidian.md/Plugins/Getting+started/Build+a+plugin)
+- [Obsidian API Reference](https://github.com/obsidianmd/obsidian-api)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
 
 ---
 
-**Note**: This plugin is in active development. Features and interfaces may change as we work towards a stable release.
+**Note**: This plugin is in active development. Features and interfaces may change as we work towards a stable release. Please report any issues or suggestions on GitHub.
