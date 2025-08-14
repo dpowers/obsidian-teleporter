@@ -23,7 +23,12 @@ data.json
 
 # Test vaults for local development
 test-vault/
-test-vault-personal/
-test-vault-work/
-test-vault-archive/
+test-vault-*/
 test-vaults-config.json
+*.test-vault/
+.test-vault*/
+
+# Temporary test files
+test-*.md
+tmp-vault*/
+temp-vault*/
