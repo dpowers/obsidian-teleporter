@@ -165,5 +165,15 @@
     }
   },
   "active": "fe0f8d1417007fcd",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "releases/v1.0.0/checksums.txt",
+    "releases/v1.0.0/RELEASE_NOTES.md",
+    "releases/v1.0.0/obsidian-teleporter-1.0.0.zip",
+    "releases/v1.0.0/styles.css",
+    "releases/v1.0.0/manifest.json",
+    "releases/v1.0.0/main.js",
+    "releases/v1.0.0",
+    "releases",
+    "scripts/prepare-release.mjs"
+  ]
 }

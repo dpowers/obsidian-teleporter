@@ -32,3 +32,6 @@ test-vaults-config.json
 test-*.md
 tmp-vault*/
 temp-vault*/
+
+# Release build artifacts
+releases/
