@@ -13,7 +13,7 @@ This guide explains how to set up a development environment for the Obsidian Tel
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/obsidian-teleporter.git
+   git clone https://github.com/dpowers/obsidian-teleporter.git
    cd obsidian-teleporter
    ```
 
@@ -298,6 +298,6 @@ If the build fails:
 
 ## Questions?
 
-- Check existing [GitHub Issues](https://github.com/yourusername/obsidian-teleporter/issues)
+- Check existing [GitHub Issues](https://github.com/dpowers/obsidian-teleporter/issues)
 - Join the discussion in [Obsidian Forums](https://forum.obsidian.md)
 - Review the [README](README.md) for usage information

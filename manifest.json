@@ -5,7 +5,7 @@
 	"minAppVersion": "0.15.0",
 	"description": "Move files seamlessly between Obsidian vaults with a simple hotkey.",
 	"author": "Obsidian Teleporter",
-	"authorUrl": "https://github.com/yourusername/obsidian-teleporter",
+	"authorUrl": "https://github.com/dpowers/obsidian-teleporter",
 	"fundingUrl": "",
 	"isDesktopOnly": true
 }

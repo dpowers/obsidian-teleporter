@@ -1,6 +1,6 @@
 # Obsidian Teleporter Plugin
 
-[![Version](https://img.shields.io/badge/version-0.1.0-blue)](https://github.com/yourusername/obsidian-teleporter/releases)
+[![Version](https://img.shields.io/badge/version-0.1.0-blue)](https://github.com/dpowers/obsidian-teleporter/releases)
 [![Obsidian](https://img.shields.io/badge/obsidian-%3E%3D0.15.0-purple)](https://obsidian.md)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
@@ -26,7 +26,7 @@ Once approved, you'll be able to install directly from Obsidian:
 3. Click Install, then Enable
 
 ### Manual Installation
-1. Download the latest `obsidian-teleporter-[version].zip` from [Releases](https://github.com/yourusername/obsidian-teleporter/releases)
+1. Download the latest `obsidian-teleporter-[version].zip` from [Releases](https://github.com/dpowers/obsidian-teleporter/releases)
 2. Extract the archive into your vault's plugins folder: `<vault>/.obsidian/plugins/obsidian-teleporter/`
 3. Reload Obsidian (Ctrl/Cmd + R)
 4. Enable the plugin in Settings → Community plugins
@@ -34,7 +34,7 @@ Once approved, you'll be able to install directly from Obsidian:
 ### Building from Source
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/obsidian-teleporter.git
+git clone https://github.com/dpowers/obsidian-teleporter.git
 
 # Navigate to the project directory
 cd obsidian-teleporter
@@ -247,7 +247,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 - Verify disk space availability
 
 ### Getting Help
-- Check [Issues](https://github.com/yourusername/obsidian-teleporter/issues) for known problems
+- Check [Issues](https://github.com/dpowers/obsidian-teleporter/issues) for known problems
 - Join the discussion in [Obsidian Community Forums](https://forum.obsidian.md)
 - Report bugs with detailed reproduction steps
 
