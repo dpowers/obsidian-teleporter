@@ -1,6 +1,6 @@
 # Obsidian Teleporter Plugin
 
-[![Version](https://img.shields.io/badge/version-0.1.0-blue)](https://github.com/dpowers/obsidian-teleporter/releases)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/dpowers/obsidian-teleporter/releases)
 [![Obsidian](https://img.shields.io/badge/obsidian-%3E%3D0.15.0-purple)](https://obsidian.md)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 

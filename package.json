@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-teleporter",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"description": "An Obsidian plugin that enables seamless file movement between vaults",
 	"main": "main.js",
 	"scripts": {
