@@ -166,6 +166,7 @@
   },
   "active": "fe0f8d1417007fcd",
   "lastOpenFiles": [
+    "scripts/create-github-release.sh",
     "releases/v1.0.0/checksums.txt",
     "releases/v1.0.0/RELEASE_NOTES.md",
     "releases/v1.0.0/obsidian-teleporter-1.0.0.zip",

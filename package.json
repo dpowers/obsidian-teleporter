@@ -18,7 +18,10 @@
 		"clean-vaults": "node scripts/setup-test-vaults.mjs clean",
 		"list-vaults": "node scripts/setup-test-vaults.mjs list",
 		"test:multi": "npm run setup-vaults && npm run deploy",
-		"test:full": "npm run clean-vaults && npm run setup-vaults && npm run deploy"
+		"test:full": "npm run clean-vaults && npm run setup-vaults && npm run deploy",
+		"release:prepare": "node scripts/prepare-release.mjs",
+		"release:create": "bash scripts/create-github-release.sh",
+		"release": "npm run release:prepare && npm run release:create"
 	},
 	"keywords": [
 		"obsidian",
