@@ -18,8 +18,21 @@
               "icon": "lucide-book-up",
               "title": "Release Notes 1.9.8"
             }
+          },
+          {
+            "id": "cec3133366d16b6e",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.9.9"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.9.9"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -164,7 +177,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "fe0f8d1417007fcd",
+  "active": "cec3133366d16b6e",
   "lastOpenFiles": [
     "scripts/create-github-release.sh",
     "releases/v1.0.0/checksums.txt",

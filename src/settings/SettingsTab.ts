@@ -126,51 +126,6 @@ export class TeleporterSettingTab extends PluginSettingTab {
 				}),
 			);
 
-		// Advanced Settings
-		containerEl.createEl("h3", { text: "Advanced Settings" });
-
-		new Setting(containerEl)
-			.setName("Configure hotkey")
-			.setDesc(
-				"Set the keyboard shortcut for teleporting files in Obsidian's hotkey settings",
-			)
-			.addButton((button) =>
-				button
-					.setButtonText("Open Hotkey Settings")
-					.setCta()
-					.onClick(() => {
-						// @ts-ignore - Obsidian's internal API
-						this.app.setting.open();
-						// @ts-ignore - Obsidian's internal API
-						this.app.setting.openTab("hotkeys");
-						// Focus on search and pre-fill with our plugin name
-						setTimeout(() => {
-							// @ts-ignore - Obsidian's internal API
-							const searchEl = this.app.setting.containerEl.querySelector(
-								'.setting-item-control input[type="text"]',
-							);
-							if (searchEl) {
-								searchEl.value = "Teleporter";
-								searchEl.dispatchEvent(new Event("input"));
-							}
-						}, 100);
-					}),
-			);
-
-		new Setting(containerEl)
-			.setName("Clear recent destinations")
-			.setDesc("Remove all recently used destination folders")
-			.addButton((button) =>
-				button
-					.setButtonText("Clear")
-					.setWarning()
-					.onClick(async () => {
-						this.plugin.settings.recentDestinations = [];
-						await this.plugin.saveSettings();
-						new Notice("Recent destinations cleared");
-					}),
-			);
-
 		// Footer with plugin info
 		this.createFooter(containerEl);
 	}
