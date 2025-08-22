@@ -31,5 +31,8 @@ test-*.md
 tmp-vault*/
 temp-vault*/
 
+# Build output
+main.js
+
 # Release build artifacts
 releases/
